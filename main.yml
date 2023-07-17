@@ -1,0 +1,10 @@
+- hosts: all
+  vars:
+    bind9_templates: "{{ playbook_dir }}/templates/"
+    bind9_authoritative: yes
+    bind9_generate_ddns_key: true
+    bind9_zonedir: /etc/bind/zones
+    #bind9_zonedir: /var/lib/bind/zones
+    bind9_local_keydir: files/bind/keys
+  roles:
+    - systemli.bind9

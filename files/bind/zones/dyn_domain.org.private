@@ -1,0 +1,4 @@
+key "dyn_domain.org_dyn_domain.org_update" {
+	algorithm hmac-sha512;
+	secret "gt5OsvJ/PzquLXeyWORNjS1BYvbPExEw9a8XbOwBH5xJDV6kfGLWMuwjOUp0rCEZ7SEvRdDb0X9YiVtjnsV4Sg==";
+};

@@ -1,0 +1,19 @@
+bind9_authoritative: yes
+# bind9_zones_static: 
+#- { name: dyn_domain.org , type=master }
+bind9_generate_ddns_key: true
+bind9_zonedir: /etc/bind/zones
+#bind9_zonedir: /var/lib/bind/zones
+#bind9_local_keydir: /etc/bind/keys
+bind9_forward: yes
+bind9_forward_servers:
+- 8.8.8.8
+- 4.4.4.4
+bind9_slaves:
+- 127.0.0.2
+- 127.0.0.3
+- 127.0.0.4
+bind9_our_neighbors:
+- 127.0.0.2
+- 127.0.0.3
+- 127.0.0.4

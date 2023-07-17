@@ -1,0 +1,31 @@
+# bind9_zone_static:  zone files copied from `files/bind/zones/`
+bind9_zones_dynamic:
+- name: &domain dyn_domain.org
+  type: master
+  update_keyfile: "{{ ref.domain }}"
+  update_policy_grant: "subdomain {{ ref.domain }}. ANY"
+  default_ttl: 600
+  serial: 2022050501
+  refresh: 1D
+  retry: 2H
+  expire: 1000H
+  # NS and other pre-formatted records values must be given as full qualified domain names, with or without final dot, but not relative to the zone
+  primary: "ns1.{{ ref.domain }}"         # Optional, if you don't define it, firs NS is taken 
+  admin: "postmaster.{{ ref.domain }}"
+  ns_records:
+  - 1.2.3.4
+  - 1.2.3.4
+  # RR values are either relative to the zone, either with a final dot when outside.
+  rrs:
+  - {label: "@", type: A, rdata: 8.8.8.221}
+  - {label: "@", type: AAAA, rdata: 2001:db8:6a::95}
+  - {label: webserver, ttl: 86400, type: A, rdata: 8.8.8.223}
+  - {label: webserver, ttl: 86400, type: AAAA, rdata: 2001:db8:6a::23}
+
+
+ref:
+  domain: *domain
+
+# bind9_zones_static:
+## - name: static_dom.o
+#   type: master
